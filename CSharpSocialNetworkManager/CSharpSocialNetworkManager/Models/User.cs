@@ -10,5 +10,8 @@ namespace CSharpSocialNetworkManager.Models
     {
         public string Name { get; set; }    
         public string Email { get; set; }
+        public bool IsActive { get; set; } = true;
+        public short Age { get; set; }
+        public DateTime DateCreated { get; set; } = DateTime.Now;
     }
 }
