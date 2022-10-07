@@ -13,5 +13,13 @@ namespace CSharpSocialNetworkManager.Models
         public bool IsActive { get; set; } = true;
         public short Age { get; set; }
         public DateTime DateCreated { get; set; } = DateTime.Now;
+        public bool IsValid(bool validateAge = true)
+        {
+            if (string.IsNullOrEmpty(Name)||string.IsNullOrEmpty(Email))
+                return false;
+            if ((Age < 0 || Age > 250) && validateAge)
+                return false;
+            return true;
+        }
     }
 }

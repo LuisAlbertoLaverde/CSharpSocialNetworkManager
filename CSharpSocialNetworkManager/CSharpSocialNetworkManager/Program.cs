@@ -18,10 +18,16 @@ User.Age =short.Parse(Console.ReadLine());
 //email= User.Email;
 //User.Age = age; 
 
-Console.WriteLine("Sus datos son:");
-Console.WriteLine($"Nombre: {User.Name}");
-Console.WriteLine($"Correo electronico: {User.Email}");
-Console.WriteLine($"Edad: {User.Age}");
-Console.WriteLine($"Estado activo: {User.IsActive}");
-Console.WriteLine($"Fecha de ingreso: {User.DateCreated}");
+if (User.IsValid())
+{
+    Console.WriteLine("Sus datos son:");
+    Console.WriteLine($"Nombre: {User.Name}");
+    Console.WriteLine($"Correo electronico: {User.Email}");
+    Console.WriteLine($"Edad: {User.Age}");
+    Console.WriteLine($"Estado activo: {User.IsActive}");
+    Console.WriteLine($"Fecha de ingreso: {User.DateCreated}");
+}
+else
+    Console.WriteLine("Los datos del usuario no son validos");
+
 
