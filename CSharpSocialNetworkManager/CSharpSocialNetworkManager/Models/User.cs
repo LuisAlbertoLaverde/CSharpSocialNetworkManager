@@ -1,4 +1,5 @@
-﻿using System;
+﻿using CSharpSocialNetworkManager.Utilities;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -15,7 +16,7 @@ namespace CSharpSocialNetworkManager.Models
         public DateTime DateCreated { get; set; } = DateTime.Now;
         public bool IsValid(bool validateAge = true)
         {
-            if (string.IsNullOrEmpty(Name)||string.IsNullOrEmpty(Email))
+            if (string.IsNullOrEmpty(Name)||string.IsNullOrEmpty(Email) || !HelperValidator.IsValidEmail(Email))
                 return false;
             if ((Age < 0 || Age > 250) && validateAge)
                 return false;
