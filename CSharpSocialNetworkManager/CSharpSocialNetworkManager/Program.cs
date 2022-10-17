@@ -2,37 +2,33 @@
 
 using CSharpSocialNetworkManager.Models;
 
-AppManager App = new AppManager();
-Console.WriteLine($"Bienvenido a {App.AppTittle}");
+AppManager app = new AppManager();
+Console.WriteLine($"Bienvenido a {app.AppTittle}");
 
 User User = new User();
 Console.WriteLine("Redes sociales disponibles");
-foreach (var item in App.SocialNetworks)
+foreach (var item in app.SocialNetworks)
 {
     Console.WriteLine($"{item.Name}");
 }
-foreach (var item in App.SocialNetworksWithGroups)
+foreach (var item in app.SocialNetworksWithGroups)
 {
     Console.WriteLine($"{item.Name}");
 }
 Console.WriteLine("Escriba el nombre de la red social a la que desea ingresar");
 string socialNetworkName = Console.ReadLine();
-foreach (var item in App.SocialNetworks)
+foreach (var item in app.SocialNetworks)
 {
     if (item.Name.ToLower() == socialNetworkName.ToLower())
     {
-        Console.WriteLine($"Nombre : {item.Name}");
-        Console.WriteLine($"Descripcion : {item.Description}");
-        Console.WriteLine($"Año de creación : {item.DateCreated.Year}");
+        Console.WriteLine(app.GetSocialNetWorkInformation(item));
     }
 }
-foreach (var item in App.SocialNetworksWithGroups)
+foreach (var item in app.SocialNetworksWithGroups)
 {
     if (item.Name.ToLower() == socialNetworkName.ToLower())
     {
-        Console.WriteLine($"Nombre : {item.Name}");
-        Console.WriteLine($"Descripcion : {item.Description}");
-        Console.WriteLine($"Año de creación : {item.DateCreated.Year}");
+        Console.WriteLine(app.GetSocialNetWorkInformation(item));
     }
 
 }

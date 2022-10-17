@@ -28,7 +28,7 @@ namespace CSharpSocialNetworkManager.Models
             });
             SocialNetworks.Add(new SocialNetwork()
             {
-                Name = "Twiter",
+                Name = "Twitter",
                 Description = "Red social para intercambio de mensajes cortos",
                 Users = new List<User>(),
                 DateCreated = new DateTime(2009, 12, 10),
@@ -38,10 +38,30 @@ namespace CSharpSocialNetworkManager.Models
                 Name = "Facebook",
                 Description = "Red social para intercambio de fotos, videos pensamientos y debates",
                 Users = new List<User>(),
+                Groups=new List<string>() { "Programadores CSharp", "Amantes de la musica", "Programadores Go"},
                 DateCreated = new DateTime(2012, 8, 15),
             });
         }
         public List<SocialNetwork>SocialNetworks { get; set; }
         public List<SocialNetworksWhitGroups>SocialNetworksWithGroups { get; set; }
+        public String GetSocialNetWorkInformation<T>(T socialNetwork )
+        {
+            StringBuilder stringBuilder = new StringBuilder();
+
+            var SocialNetworkItem = socialNetwork as SocialNetwork;
+
+            stringBuilder.AppendLine($"Nombre : {SocialNetworkItem.Name}");
+            stringBuilder.AppendLine($"Descripcion : {SocialNetworkItem.Description}");
+            stringBuilder.AppendLine($"Año de creación : {SocialNetworkItem.DateCreated.Year}");
+
+            if (socialNetwork is SocialNetworksWhitGroups)
+            {
+                var SocialNetworkWithGroupsItem = socialNetwork as SocialNetworksWhitGroups;
+
+                stringBuilder.AppendLine($"Grupos: {string.Join(",", SocialNetworkWithGroupsItem.Groups)}");
+            }
+
+            return stringBuilder.ToString();
+        }
     }
 }
