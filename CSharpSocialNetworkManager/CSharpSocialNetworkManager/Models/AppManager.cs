@@ -46,6 +46,9 @@ namespace CSharpSocialNetworkManager.Models
         public List<SocialNetworksWhitGroups>SocialNetworksWithGroups { get; set; }
         public String GetSocialNetWorkInformation<T>(T socialNetwork )
         {
+            if (socialNetwork == null)
+                return "";
+
             StringBuilder stringBuilder = new StringBuilder();
 
             var SocialNetworkItem = socialNetwork as SocialNetwork;
@@ -63,5 +66,30 @@ namespace CSharpSocialNetworkManager.Models
 
             return stringBuilder.ToString();
         }
+
+        public String GetSocialNetWorkStats<T>(T socialNetwork)
+        {
+            if (socialNetwork == null)
+                return "";
+
+            StringBuilder stringBuilder = new StringBuilder();
+
+            var SocialNetworkItem = socialNetwork as SocialNetwork;
+
+            stringBuilder.AppendLine($"Cantidad de usuarios : {SocialNetworkItem.Users.Count}");
+            stringBuilder.AppendLine($"Promedio de edad : {SocialNetworkItem.Users.Average(p=> p.Age)}");
+            stringBuilder.AppendLine($"El usuario de mayor edad tiene : {SocialNetworkItem.Users.Max(p=> p.Age)} años");
+            stringBuilder.AppendLine($"El usuario de menor edad tiene : {SocialNetworkItem.Users.Min(p=> p.Age)} años");
+
+            if (socialNetwork is SocialNetworksWhitGroups)
+            {
+                var SocialNetworkWithGroupsItem = socialNetwork as SocialNetworksWhitGroups;
+
+                stringBuilder.AppendLine($"Cantidad de grupos: {SocialNetworkWithGroupsItem.Groups.Count}");
+            }
+
+            return stringBuilder.ToString();
+        }
+
     }
 }
