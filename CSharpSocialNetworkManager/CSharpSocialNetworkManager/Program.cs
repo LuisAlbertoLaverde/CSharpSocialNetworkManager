@@ -1,15 +1,17 @@
 ﻿// See https://aka.ms/new-console-template for more information
 
 using CSharpSocialNetworkManager.Models;
+using CSharpSocialNetworkManager.Utilities.Log;
 using System.Linq;
 
 
-AppManager app = new AppManager();
+var app = new AppManager(new LogJson());
+
 Console.WriteLine($"Bienvenido a {app.AppTittle}");
 
 while (true)
 {
-    User User = new User();
+    var User = new User();
     Console.WriteLine("Redes sociales disponibles");
 
     foreach (var item in app.SocialNetworks.Concat(app.SocialNetworksWithGroups))

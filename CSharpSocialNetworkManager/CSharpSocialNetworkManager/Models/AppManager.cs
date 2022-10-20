@@ -1,4 +1,5 @@
-﻿using System;
+﻿using CSharpSocialNetworkManager.Utilities.Log;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -10,8 +11,11 @@ namespace CSharpSocialNetworkManager.Models
     {
         public string AppTittle { get; set; }
 
-        public AppManager()
+        public ILog log { get; set; }
+
+        public AppManager(ILog logger)
         {
+            log = logger;
             AppTittle = "Adminsitrador de redes sociales";
             SocialNetworks = new List<SocialNetwork>();
             SocialNetworksWithGroups = new List<SocialNetworksWhitGroups>();
@@ -41,6 +45,9 @@ namespace CSharpSocialNetworkManager.Models
                 Groups=new List<string>() { "Programadores CSharp", "Amantes de la musica", "Programadores Go"},
                 DateCreated = new DateTime(2012, 8, 15),
             });
+
+            log.SaveLog("InitializeSocialNetworks");
+
         }
         public List<SocialNetwork>SocialNetworks { get; set; }
         public List<SocialNetworksWhitGroups>SocialNetworksWithGroups { get; set; }
@@ -63,6 +70,7 @@ namespace CSharpSocialNetworkManager.Models
 
                 stringBuilder.AppendLine($"Grupos: {string.Join(",", SocialNetworkWithGroupsItem.Groups)}");
             }
+            log.SaveLog("GetSocialNetWorkInformation");
 
             return stringBuilder.ToString();
         }
@@ -76,17 +84,26 @@ namespace CSharpSocialNetworkManager.Models
 
             var SocialNetworkItem = socialNetwork as SocialNetwork;
 
-            stringBuilder.AppendLine($"Cantidad de usuarios : {SocialNetworkItem.Users.Count}");
-            stringBuilder.AppendLine($"Promedio de edad : {SocialNetworkItem.Users.Average(p=> p.Age)}");
-            stringBuilder.AppendLine($"El usuario de mayor edad tiene : {SocialNetworkItem.Users.Max(p=> p.Age)} años");
-            stringBuilder.AppendLine($"El usuario de menor edad tiene : {SocialNetworkItem.Users.Min(p=> p.Age)} años");
-
-            if (socialNetwork is SocialNetworksWhitGroups)
+            try
             {
-                var SocialNetworkWithGroupsItem = socialNetwork as SocialNetworksWhitGroups;
+                stringBuilder.AppendLine($"Cantidad de usuarios : {SocialNetworkItem.Users.Count}");
+                stringBuilder.AppendLine($"Promedio de edad : {SocialNetworkItem.Users.Average(p=> p.Age)}");
+                stringBuilder.AppendLine($"El usuario de mayor edad tiene : {SocialNetworkItem.Users.Max(p=> p.Age)} años");
+                stringBuilder.AppendLine($"El usuario de menor edad tiene : {SocialNetworkItem.Users.Min(p=> p.Age)} años");
 
-                stringBuilder.AppendLine($"Cantidad de grupos: {SocialNetworkWithGroupsItem.Groups.Count}");
+                if (socialNetwork is SocialNetworksWhitGroups)
+                {
+                    var SocialNetworkWithGroupsItem = socialNetwork as SocialNetworksWhitGroups;
+
+                    stringBuilder.AppendLine($"Cantidad de grupos: {SocialNetworkWithGroupsItem.Groups.Count}");
+                }
             }
+            catch (Exception ex)
+            {
+                log.SaveLog(ex.Message);
+            }
+
+            log.SaveLog("GetSocialNetworkStats");
 
             return stringBuilder.ToString();
         }

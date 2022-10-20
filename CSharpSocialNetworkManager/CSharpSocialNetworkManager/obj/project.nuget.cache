@@ -1,8 +1,10 @@
 {
   "version": 2,
-  "dgSpecHash": "f6qXzAorJhSIQXCWmGLjnWBFMKKpLccO9k+QC9Eod/V7ZVcV/8FhqtYzdJgBpKLxj2J7NX7ekQCJzS1yMLv74A==",
+  "dgSpecHash": "v7x+M7Mw/tChDowg74WEPHj8oP86v5R0kDqee2sloiIh9fLKJWbeD/MPy8PtzMyG40dWB6g9hZcuaZt6MBYUqQ==",
   "success": true,
   "projectFilePath": "E:\\Projects\\CSharpSocialNetworkManager\\CSharpSocialNetworkManager\\CSharpSocialNetworkManager\\CSharpSocialNetworkManager.csproj",
-  "expectedPackageFiles": [],
+  "expectedPackageFiles": [
+    "C:\\Users\\Alberto\\.nuget\\packages\\newtonsoft.json\\13.0.1\\newtonsoft.json.13.0.1.nupkg.sha512"
+  ],
   "logs": []
 }

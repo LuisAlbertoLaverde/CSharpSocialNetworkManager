@@ -13,3 +13,5 @@ E:\Projects\CSharpSocialNetworkManager\CSharpSocialNetworkManager\CSharpSocialNe
 E:\Projects\CSharpSocialNetworkManager\CSharpSocialNetworkManager\CSharpSocialNetworkManager\obj\Debug\net6.0\CSharpSocialNetworkManager.pdb
 E:\Projects\CSharpSocialNetworkManager\CSharpSocialNetworkManager\CSharpSocialNetworkManager\obj\Debug\net6.0\CSharpSocialNetworkManager.genruntimeconfig.cache
 E:\Projects\CSharpSocialNetworkManager\CSharpSocialNetworkManager\CSharpSocialNetworkManager\obj\Debug\net6.0\ref\CSharpSocialNetworkManager.dll
+E:\Projects\CSharpSocialNetworkManager\CSharpSocialNetworkManager\CSharpSocialNetworkManager\bin\Debug\net6.0\Newtonsoft.Json.dll
+E:\Projects\CSharpSocialNetworkManager\CSharpSocialNetworkManager\CSharpSocialNetworkManager\obj\Debug\net6.0\CSharpSocialNetworkManager.csproj.CopyComplete
